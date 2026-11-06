@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inklist — 今日待办</title>
+    <meta
+      name="description"
+      content="Inklist：一个简洁的网页版待办清单 demo，支持添加、完成、筛选与本地保存。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true">
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+      <div class="grain"></div>
+    </div>
+
+    <main class="shell">
+      <header class="brand">
+        <p class="brand-mark">Inklist</p>
+        <h1 class="brand-line">把今天要做的事，写在一处。</h1>
+        <p class="brand-sub">本地保存，刷新不丢。适合快速演示与日常轻量记录。</p>
+      </header>
+
+      <section class="workspace" aria-label="待办清单">
+        <form class="composer" id="todo-form" autocomplete="off">
+          <label class="sr-only" for="todo-input">新的待办</label>
+          <input
+            id="todo-input"
+            name="todo"
+            type="text"
+            maxlength="120"
+            placeholder="写下今天的一件事…"
+            required
+          />
+          <button type="submit" class="btn-add">添加</button>
+        </form>
+
+        <div class="toolbar">
+          <div class="filters" role="tablist" aria-label="筛选">
+            <button type="button" class="filter is-active" data-filter="all" role="tab" aria-selected="true">
+              全部
+            </button>
+            <button type="button" class="filter" data-filter="active" role="tab" aria-selected="false">
+              进行中
+            </button>
+            <button type="button" class="filter" data-filter="done" role="tab" aria-selected="false">
+              已完成
+            </button>
+          </div>
+          <p class="count" id="todo-count" aria-live="polite">0 项待办</p>
+        </div>
+
+        <ul class="todo-list" id="todo-list" aria-live="polite"></ul>
+
+        <div class="empty" id="empty-state" hidden>
+          <p class="empty-title">清单是空的</p>
+          <p class="empty-copy">添加第一件事，从这里开始今天。</p>
+        </div>
+
+        <footer class="footer-bar">
+          <button type="button" class="linkish" id="clear-done" hidden>清除已完成</button>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
