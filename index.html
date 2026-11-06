@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tick — Todo List</title>
+    <meta name="description" content="A clean web todo list for demos. Add, complete, and clear tasks with local persistence." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true">
+      <div class="blob blob-a"></div>
+      <div class="blob blob-b"></div>
+      <div class="grain"></div>
+    </div>
+
+    <main class="shell">
+      <header class="brand">
+        <p class="logo">Tick</p>
+        <h1>把今天要做的事，收进一份干净清单。</h1>
+        <p class="lede">添加、勾选、筛选。数据保存在本机浏览器，刷新不会丢。</p>
+      </header>
+
+      <section class="composer" aria-label="添加待办">
+        <form id="todo-form" class="todo-form" autocomplete="off">
+          <label class="sr-only" for="todo-input">新待办</label>
+          <input
+            id="todo-input"
+            name="todo"
+            type="text"
+            maxlength="120"
+            placeholder="写下一件要完成的事…"
+            required
+          />
+          <button type="submit" class="add-btn">
+            <span>添加</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </form>
+      </section>
+
+      <section class="board" aria-label="待办列表">
+        <div class="toolbar">
+          <div class="filters" role="tablist" aria-label="筛选">
+            <button type="button" class="filter is-active" data-filter="all" role="tab" aria-selected="true">全部</button>
+            <button type="button" class="filter" data-filter="active" role="tab" aria-selected="false">进行中</button>
+            <button type="button" class="filter" data-filter="done" role="tab" aria-selected="false">已完成</button>
+          </div>
+          <p class="count" id="todo-count" aria-live="polite">0 项待办</p>
+        </div>
+
+        <ul id="todo-list" class="todo-list"></ul>
+
+        <div id="empty-state" class="empty" hidden>
+          <p class="empty-title">清单还是空的</p>
+          <p class="empty-copy">在上方输入框写下一件事，按回车即可添加。</p>
+        </div>
+
+        <div class="footer-actions">
+          <button type="button" id="clear-done" class="ghost-btn" hidden>清除已完成</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
